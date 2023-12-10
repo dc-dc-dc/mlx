@@ -143,6 +143,33 @@ class Sigmoid(Module):
     pass
 
 
+def prelu(x: mx.array, alpha: mx.array) -> mx.array:
+    r"""Applies the element-wise function:
+
+    .. math::
+        \text{PReLU}(x) = \max(0,x) + a * \min(0,x)
+
+    Here :math:`a` is an array.
+    """
+    return mx.maximum(0, x) + alpha * mx.minimum(0, x)
+
+
+def mish(x: mx.array) -> mx.array:
+    r"""Applies the Mish function, element-wise.
+    Mish: A Self Regularized Non-Monotonic Neural Activation Function.
+
+    .. math::
+        \text{Mish}(x) = x * \text{Tanh}(\text{Softplus}(x))
+
+    """
+    return x * mx.tanh(softplus(x))
+
+
+@_make_activation_module(mish)
+class Mish(Module):
+    pass
+
+
 @_make_activation_module(relu)
 class ReLU(Module):
     pass
@@ -220,6 +247,15 @@ class SiLU(Module):
 @_make_activation_module(log_sigmoid)
 class LogSigmoid(Module):
     pass
+
+
+class PReLU(Module):
+    def __init__(self, num_parameters=1):
+        super().__init__()
+        self.weight = mx.empty(num_parameters)
+
+    def __call__(self, x: mx.array):
+        return prelu(x, self.weight)
 
 
 class GELU(Module):
