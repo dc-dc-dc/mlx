@@ -16,9 +16,6 @@
 namespace py = pybind11;
 using namespace py::literals;
 
-
-
-
 enum PyScalarT {
   pybool = 0,
   pyint = 1,
