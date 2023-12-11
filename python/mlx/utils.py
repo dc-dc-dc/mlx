@@ -1,6 +1,10 @@
 # Copyright © 2023 Apple Inc.
 
 
+def random_change():
+    pass
+
+
 def tree_map(fn, tree, *rest):
     """Applies ``fn`` to the leaves of the python tree ``tree`` and
     returns a new collection with the results.
