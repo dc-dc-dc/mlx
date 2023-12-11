@@ -158,6 +158,8 @@ def mish(x: mx.array) -> mx.array:
     r"""Applies the Mish function, element-wise.
     Mish: A Self Regularized Non-Monotonic Neural Activation Function.
 
+    Reference: https://arxiv.org/abs/1908.08681
+
     .. math::
         \text{Mish}(x) = x * \text{Tanh}(\text{Softplus}(x))
 
