@@ -146,8 +146,10 @@ Neural Network Layers
 
    Embedding
    ReLU
+   PReLU
    GELU
    SiLU
+   Mish
    Linear
    Conv1d
    Conv2d
@@ -169,7 +171,9 @@ simple functions.
    gelu_approx
    gelu_fast_approx
    relu
+   prelu
    silu
+   mish
 
 Loss Functions
 --------------
